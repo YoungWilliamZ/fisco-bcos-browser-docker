@@ -41,9 +41,8 @@ ENV TOMCAT_MAJOR 9
 ENV TOMCAT_VERSION 9.0.16
 
 RUN wget https://www-us.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
- tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
- rm apache-tomcat*.tar.gz && \
- mv apache-tomcat* ${CATALINA_HOME}
+ tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz "${CATALINA_HOME}"&& \
+ rm apache-tomcat*.tar.gz
 
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
 
