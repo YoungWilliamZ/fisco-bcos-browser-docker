@@ -39,6 +39,9 @@ RUN yum -y clean all
 # Install Tomcat
 ENV TOMCAT_MAJOR 9
 ENV TOMCAT_VERSION 9.0.16
+ENV CATALINA_HOME /opt/tomcat
+
+WORKDIR "${CATALINA_HOME}"
 
 RUN wget https://www-us.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
  tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz "${CATALINA_HOME}"&& \
@@ -56,7 +59,7 @@ RUN groupadd -r tomcat && \
  useradd -g tomcat -d ${CATALINA_HOME} -s /sbin/nologin  -c "Tomcat user" tomcat && \
  chown -R tomcat:tomcat ${CATALINA_HOME}
 
-WORKDIR /opt/tomcat
+
 
 EXPOSE 8080
 EXPOSE 8009
