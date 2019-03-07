@@ -41,6 +41,8 @@ ENV TOMCAT_MAJOR 9
 ENV TOMCAT_VERSION 9.0.16
 ENV CATALINA_HOME /opt/tomcat
 
+RUN mkdir -p ${CATALINA_HOME}
+
 WORKDIR "${CATALINA_HOME}"
 
 RUN wget https://www-us.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
