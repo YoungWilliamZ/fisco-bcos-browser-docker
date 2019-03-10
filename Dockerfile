@@ -1,6 +1,7 @@
 FROM centos:7
 
 MAINTAINER YoungWilliam <youngwilliam.zheng@gmail.com>
+
 LABEL Version="0.1"
 LABEL Name="fisco-bcos-browser"
 LABEL Description="Apache Tomcat Container 9 + Oracle Jre 8 + gradle 5.2.1"
@@ -40,6 +41,7 @@ RUN yum -y clean all
 ENV TOMCAT_MAJOR 9
 ENV TOMCAT_VERSION 9.0.16
 ENV CATALINA_HOME /opt/tomcat
+ENV PATH $PATH:$CATALINA_HOME/bin:$CATALINA_HOME/scripts
 
 RUN mkdir -p ${CATALINA_HOME}
 
@@ -69,9 +71,7 @@ EXPOSE 8009
 
 USER tomcat
 CMD ["tomcat.sh"]
+# CMD ["/bin/bash", "${CATALINA_HOME}/bin/startup.sh"]
 
-
-
-WORKDIR /
-
-CMD ["/bin/bash", "--login"]
+USER root
+# CMD ["/bin/bash", "--login"]
