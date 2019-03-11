@@ -70,8 +70,34 @@ EXPOSE 8080
 EXPOSE 8009
 
 USER tomcat
-CMD ["tomcat.sh"]
+# RUN /bin/bash tomcat.sh
 # CMD ["/bin/bash", "${CATALINA_HOME}/bin/startup.sh"]
 
+# FISCO-BCOS-BROWSER
+
+
 USER root
-# CMD ["/bin/bash", "--login"]
+
+WORKDIR /
+
+RUN yum -y install git
+RUN cd / && \
+    git clone http://github.com/FISCO-BCOS/fisco-bcos-browser.git /fisco-bcos-browser
+
+WORKDIR /tmp
+
+RUN wget http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-community-client-5.7.24-1.el7.x86_64.rpm
+RUN wget http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-community-libs-5.7.24-1.el7.x86_64.rpm
+RUN wget http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-community-common-5.7.24-1.el7.x86_64.rpm
+RUN rpm -ivh mysql-community-common-5.7.24-1.el7.x86_64.rpm mysql-community-libs-5.7.24-1.el7.x86_64.rpm mysql-community-client-5.7.24-1.el7.x86_64.rpm
+
+# From: https://blog.csdn.net/gdsgdh308227363/article/details/79683058
+
+WORKDIR  /fisco-bcos-browser
+ADD deploy_browser.sh /fisco-bcos-browser/deploy_browser.sh
+ADD tomcat_check.sh /fisco-bcos-browser/tomcat_check.sh
+
+# RUN /bin/bash /fisco-bcos-browser/deploy_browser.sh
+
+# CMD [ "/bin/bash" ]
+CMD [ "/bin/bash", "/fisco-bcos-browser/deploy_browser.sh" ]
