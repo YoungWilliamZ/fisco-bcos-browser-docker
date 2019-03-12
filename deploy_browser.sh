@@ -158,6 +158,8 @@ sh startup.sh
 
 echo "部署成功！请继续在每台机器上部署report脚本。"
 
+sh /fisco-bcos-browser/report/start_Agent.sh
+
 tail -f "${tomcatpath}"/logs/*
 
 

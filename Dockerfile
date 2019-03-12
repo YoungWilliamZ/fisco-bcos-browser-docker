@@ -96,6 +96,7 @@ RUN rpm -ivh mysql-community-common-5.7.24-1.el7.x86_64.rpm mysql-community-libs
 WORKDIR  /fisco-bcos-browser
 ADD deploy_browser.sh /fisco-bcos-browser/deploy_browser.sh
 ADD tomcat_check.sh /fisco-bcos-browser/tomcat_check.sh
+ADD ReportAgent.py /fisco-bcos-browser/report/ReportAgent.py
 
 # RUN /bin/bash /fisco-bcos-browser/deploy_browser.sh
 
