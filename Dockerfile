@@ -98,6 +98,11 @@ ADD deploy_browser.sh /fisco-bcos-browser/deploy_browser.sh
 ADD tomcat/tomcat_check.sh /fisco-bcos-browser/tomcat_check.sh
 ADD ReportAgent.py /fisco-bcos-browser/report/ReportAgent.py
 
+# Add python runtime environment
+RUN yum install -y epel-release
+RUN yum -y install python-pip
+RUN pip install requests
+
 # RUN /bin/bash /fisco-bcos-browser/deploy_browser.sh
 
 # CMD [ "/bin/bash" ]
