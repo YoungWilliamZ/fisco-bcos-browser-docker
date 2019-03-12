@@ -27,8 +27,8 @@ HOST_IP = "123.207.123.123" #本机器的外网IP，仅作为浏览器端区分�
 BROWSER_SERVER_IP = "localhost" #上报server端的IP
 BROWSER_SERVER_PORT = "8080" #上报server端的端口
 
-node0 = ["node0", "/bcos-data/node0/log.conf", 8545] #node的名字, log.conf的路径, RPC端口号, node的log目录(可选)
-node1 = ["node1", "/bcos-data/node1/log.conf", 8546] #node的名字, log.conf的路径, RPC端口号, log.conf的路径(可选)
+node0 = ["node0", "/bcos-data/node0/log.conf", 8545, "/bcos-data/node0/log/"] #node的名字, log.conf的路径, RPC端口号, node的log目录(可选)
+node1 = ["node1", "/bcos-data/node1/log.conf", 8546, "/bcos-data/node1/log/"] #node的名字, log.conf的路径, RPC端口号, log.conf的路径(可选)
 
 #nodes = [node0]
 nodes = [node0, node1]
