@@ -7,6 +7,8 @@ A docker version for deploying [fisco-bcos-browser](https://github.com/FISCO-BCO
 
 1. 修改 `deploy_browser.sh` 和 `ReportAgent.py` 中的配置
 2. 修改 `docker-compose.yml` 中第 19 行 `- ~/*/build:/bcos-data` 的 `~/*/build`， 修改为包含 node0/、node1/ 的目录。
+3. docker-compose build
+4. docker-compose up -d
 
 ## Files description 文件描述
 
