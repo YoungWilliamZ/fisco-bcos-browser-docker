@@ -16,8 +16,7 @@ services:
     build: .
     # command: [/bin/bash]  #["/bin/bash", "/fisco-bcos-browser/deploy_browser.sh"]
     volumes:
-      - ReportAgent.py:/fisco-bcos-browser/report/ReportAgent.py
-    #   - ~/*/build:/bcos-data
+      - ~/*/build:/bcos-data
     
     ports:
       - "8080:8080"

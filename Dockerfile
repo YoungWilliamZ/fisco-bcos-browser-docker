@@ -55,8 +55,8 @@ RUN wget https://mirrors.aliyun.com/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMC
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
 
 # Create Tomcat admin user
-ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
-ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
+ADD tomcat/create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
+ADD tomcat/tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
 RUN chmod +x $CATALINA_HOME/scripts/*.sh
 
 # Create tomcat user
@@ -95,7 +95,7 @@ RUN rpm -ivh mysql-community-common-5.7.24-1.el7.x86_64.rpm mysql-community-libs
 
 WORKDIR  /fisco-bcos-browser
 ADD deploy_browser.sh /fisco-bcos-browser/deploy_browser.sh
-ADD tomcat_check.sh /fisco-bcos-browser/tomcat_check.sh
+ADD tomcat/tomcat_check.sh /fisco-bcos-browser/tomcat_check.sh
 ADD ReportAgent.py /fisco-bcos-browser/report/ReportAgent.py
 
 # RUN /bin/bash /fisco-bcos-browser/deploy_browser.sh
