@@ -10,15 +10,23 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
       MYSQL_USER: 'test'
-      MYSQL_PASSWORD: '123456'
+      MYSQL_PASSWORD: 'test123'
 
-  fbb:
-    build: .
+  fbb-back:
+    build: ./server/.
     # command: [/bin/bash]  #["/bin/bash", "/fisco-bcos-browser/deploy_browser.sh"]
-    volumes:
-      - ~/*/build:/bcos-data
-    
     ports:
-      - "8080:8080"
+      - "8088:8088"
     depends_on:
       - db
+
+  fbb-front:
+    build: ./web/.
+    volumes: 
+      - ./web/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      -  "8080:8080"
+    depends_on:
+      - fbb-back
+    command: [nginx-debug, '-g', 'daemon off;'] # debug 模式
+    # command: ["nginx", "-g", "daemon off;"]
