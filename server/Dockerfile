@@ -64,17 +64,17 @@ WORKDIR  /fisco-bcos-browser/server/fisco-bcos-browser/dist/conf
 # 修改当前服务端口：
 #RUN sed -i "s/8088/${your_server_port}/g" application.yml
 # 修改数据库IP：
-RUN sed -i "s/127.0.0.1/${db}/g" application.yml
+RUN sed -i "s/127.0.0.1/db/g" application.yml
 # 修改数据库名称：
 #RUN sed -i "s/testDB/${your_db_name}/g" application.yml
 # 修改数据库用户名：
-RUN sed -i "s/root/${test}/g" application.yml
+#RUN sed -i "s/root/test/g" application.yml
 # 修改数据库密码：
-RUN sed -i "s/123456/${test123}/g" application.yml
+#RUN sed -i "s/123456/test123/g" application.yml
 
 WORKDIR  /fisco-bcos-browser/server/fisco-bcos-browser/dist/
 RUN chmod +x *.sh
-RUN sh start.sh
+# RUN sh start.sh
 
-# CMD [ "/bin/bash" ]
-CMD [ "tail", "-f", "log/fisco-bcos-browser.log" ]
+CMD sh ./start.sh && tail -f log/fisco-bcos-browser.log
+# CMD [ "tail", "-f", "log/fisco-bcos-browser.log" ]

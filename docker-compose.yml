@@ -11,10 +11,10 @@ services:
       MYSQL_ROOT_PASSWORD: "123456"
       MYSQL_USER: 'test'
       MYSQL_PASSWORD: 'test123'
+      MYSQL_DATABASE: 'testDB'
 
   fbb-back:
     build: ./server/.
-    # command: [/bin/bash]  #["/bin/bash", "/fisco-bcos-browser/deploy_browser.sh"]
     ports:
       - "8088:8088"
     depends_on:
