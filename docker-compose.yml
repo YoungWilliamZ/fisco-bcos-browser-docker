@@ -5,20 +5,27 @@ services:
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
-    # ports:
-    #   - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
-      MYSQL_USER: 'test'
-      MYSQL_PASSWORD: '123456'
+      MYSQL_USER: 'dbUsername'
+      MYSQL_PASSWORD: 'dbPassword'
+      MYSQL_DATABASE: 'db_browser'
 
-  fbb:
-    build: .
-    # command: [/bin/bash]  #["/bin/bash", "/fisco-bcos-browser/deploy_browser.sh"]
+  fbb_back:
+    build: ./server/.
     volumes:
-      - ~/*/build:/bcos-data
-    
-    ports:
-      - "8080:8080"
+      - ./server/application.yml:/fisco-bcos-browser/server/fisco-bcos-browser/dist/conf/application.yml:ro
     depends_on:
       - db
+    command: sh -c "./start.sh && tail -f log/*"
+
+  fbb_front:
+    build: ./web/.
+    volumes: 
+      - ./web/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      -  "5100:5100"
+    depends_on:
+      - fbb_back
+    command: [nginx-debug, '-g', 'daemon off;'] # debug 模式
+    # command: ["nginx", "-g", "daemon off;"]
