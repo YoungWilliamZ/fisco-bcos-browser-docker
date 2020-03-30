@@ -9,7 +9,7 @@ LABEL Description="Oracle Jre 8 + gradle 5.2.1"
 # python package
 RUN apt-get update && apt-get install -y libffi-dev g++ libssl-dev python-pip libmysqlclient-dev && pip install MySQL-python requests
 
-RUN git clone https://github.com/FISCO-BCOS/fisco-bcos-browser.git /fisco-bcos-browser
+RUN git clone https://gitee.com/FISCO-BCOS/fisco-bcos-browser.git /fisco-bcos-browser
 
 WORKDIR /fisco-bcos-browser/server/fisco-bcos-browser
 RUN gradle build
