@@ -15,6 +15,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.l
     && pip install -i https://pypi.douban.com/simple module_name\
     && pip install MySQL-python requests
 
+
 RUN git clone https://github.com/FISCO-BCOS/fisco-bcos-browser.git /fisco-bcos-browser
 
 WORKDIR /fisco-bcos-browser/server/fisco-bcos-browser
