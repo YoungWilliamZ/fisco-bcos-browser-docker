@@ -17,7 +17,12 @@ A docker version for deploying [fisco-bcos-browser](https://github.com/FISCO-BCO
 docker-compose up -d --build
 ```
 
-**注**：如果访问 github 速度慢，请切换到 [master-gitee](https://github.com/YoungWilliamZ/fisco-bcos-browser-docker/tree/master-gitee) 分支。
+**注**：如果访问 github 速度慢，请切换到 gitee
+
+``` sh
+# cd to this repo
+sed -i 's/github/gitee/g' server/Dockerfile
+```
 
 ## Get the log of backend 查看日志
 
