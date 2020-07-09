@@ -7,7 +7,13 @@ LABEL Name="fisco-bcos-browser 2.0"
 LABEL Description="Oracle Jre 8 + gradle 5.2.1"
 
 # python package
-RUN apt-get update && apt-get install -y python-pip libmysqlclient-dev && pip install MySQL-python requests
+RUN sed -i 's/archive.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.list \
+    && sed -i 's/security.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y python-pip libmysqlclient-dev \
+    && python -m pip install --upgrade pip \
+    && pip install -i https://pypi.douban.com/simple module_name\
+    && pip install MySQL-python requests
 
 RUN git clone https://github.com/FISCO-BCOS/fisco-bcos-browser.git /fisco-bcos-browser
 
