@@ -1,4 +1,4 @@
-FROM gradle:5.2.1-jre8
+FROM gradle:5.2.1-jdk8
 
 MAINTAINER YoungWilliam <youngwilliam.zheng@gmail.com>
 
