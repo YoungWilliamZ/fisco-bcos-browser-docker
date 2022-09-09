@@ -1,10 +1,13 @@
-FROM gradle:jdk8
+FROM gradle:5.2.1-jre8
 
 MAINTAINER YoungWilliam <youngwilliam.zheng@gmail.com>
 
 LABEL Version="2.0"
 LABEL Name="fisco-bcos-browser 2.0"
 LABEL Description="Oracle Jre 8 + gradle 5.2.1"
+
+# sed permission denied
+USER root
 
 # python package
 RUN sed -i 's/archive.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.list \
