@@ -13,7 +13,7 @@ USER root
 RUN sed -i 's/archive.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.list \
     && sed -i 's/security.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install -y python3-pip \
+    && apt-get install -y git python3-pip \
     && pip3 install PyMySQL
 
 
