@@ -1,10 +1,10 @@
 FROM gradle:5.6.4-jdk8
 
-MAINTAINER YoungWilliam <youngwilliam.zheng@gmail.com>
+MAINTAINER Toby <me@tobyan.com>
 
 LABEL Version="2.0"
 LABEL Name="fisco-bcos-browser 2.0"
-LABEL Description="Oracle Jre 8 + gradle 5.2.1"
+LABEL Description="Oracle Jre 8 + gradle 5.6.4"
 
 # sed permission denied
 USER root
