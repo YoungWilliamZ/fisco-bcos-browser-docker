@@ -17,7 +17,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.l
     && pip3 install PyMySQL
 
 
-RUN git clone https://github.com/FISCO-BCOS/fisco-bcos-browser.git /fisco-bcos-browser
+RUN git clone --depth=1 https://github.com/toby1991/fisco-bcos-browser.git /fisco-bcos-browser
 
 WORKDIR /fisco-bcos-browser/server/fisco-bcos-browser
 RUN gradle build
