@@ -5,11 +5,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Publish webdav to Registry
+    - name: Publish api to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: toby1991/fisco-bcos-browser
+        name: toby1991/fisco-bcos-browser-api
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: Dockerfile
+        dockerfile: /server/Dockerfile
+        tags: "latest,2.2.5"
+    - name: Publish web to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: toby1991/fisco-bcos-browser-web
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: /web/Dockerfile
         tags: "latest,2.2.5"
